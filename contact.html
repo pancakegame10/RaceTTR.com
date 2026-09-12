@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Troy Toney Racing</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark">TT<span>R</span></span>
+      <span class="full">Troy Toney Racing</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="sponsors.html">Sponsorship</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-dark" style="padding-bottom:30px;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Get in touch</h2>
+        <div class="gap-num">sponsorship, media, or just to say hi trackside</div>
+      </div>
+      <div class="info-strip">
+        <div>
+          <div class="n">team@troytoneyracing.com</div>
+          <div class="l">General &amp; sponsorship inquiries</div>
+        </div>
+        <div>
+          <div class="n">(555) 555-0123</div>
+          <div class="l">Replace with your team phone number</div>
+        </div>
+        <div>
+          <div class="n">@troytoneyracing</div>
+          <div class="l">Replace with your social handle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark" style="padding-top:0;">
+    <div class="wrap">
+      <form class="contact-form" action="mailto:team@troytoneyracing.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="company">Company (if applicable)</label>
+          <input type="text" id="company" name="company">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="reason">What's this about?</label>
+          <select id="reason" name="reason">
+            <option>Sponsorship</option>
+            <option>Media / press</option>
+            <option>Joining the team</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-self:start;">Send message</button>
+      </form>
+      <p style="color:var(--titanium-dim); font-size:0.85rem; margin-top:20px;">This form opens the visitor's email client. Swap it for a form service (e.g. Formspree) or a backend if you'd like submissions to land somewhere without relying on the visitor's mail app.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="checker"></div>
+    <div class="foot-grid">
+      <div>
+        <span class="mark" style="font-family:var(--font-display); font-size:1.3rem; color:var(--paper);">TT<span style="color:var(--red)">R</span></span>
+        <p style="color:var(--titanium-dim); font-size:0.9rem; max-width:32ch; margin-top:10px;">Troy Toney Racing — club karting, LO206 and KA100.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="sponsors.html">Sponsorship</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Get in touch</a></li>
+          <li><a href="mailto:team@troytoneyracing.com">team@troytoneyracing.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© 2026 Troy Toney Racing. Replace placeholder contact details and stats with your own.</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+</body>
+</html>
