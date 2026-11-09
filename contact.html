@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Troy Toney Racing</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <img src="logos/ttr-logo.jpg" alt="Troy Toney Racing" style="height:58px; width:auto; border-radius:2px;">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="sponsors.html">Sponsorship</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="parents.html">Parents &amp; Volunteers</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section-dark" style="padding-bottom:30px;">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Get in touch</h2>
+        <div class="gap-num">sponsorship, media, or just to say hi trackside</div>
+      </div>
+      <div class="info-strip">
+        <div>
+          <div class="n">TroyToneyRacing@yahoo.com</div>
+          <div class="l">General &amp; sponsorship inquiries</div>
+        </div>
+        <div>
+          <div class="n">574-218-3106 or 317-590-3538</div>
+          <div class="l"></div>
+        </div>
+        <div>
+          <div class="n">@TMTRacing on Facebook</div>
+          <div class="l"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark" style="padding-top:0;">
+    <div class="wrap">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xnppknpn" method="POST">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="company">Company (if applicable)</label>
+          <input type="text" id="company" name="company" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="reason">What's this about?</label>
+          <select id="reason" name="reason">
+            <option value="Sponsorship">Sponsorship</option>
+            <option value="Media / press">Media / press</option>
+            <option value="Joining the team">Joining the team</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" id="submit-button" class="btn btn-primary" style="justify-self:start;">Send message</button>
+        <p id="form-status" role="status" aria-live="polite" style="margin-top:14px;"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="checker"></div>
+    <div class="foot-grid">
+      <div>
+        <span class="mark" style="font-family:var(--font-display); font-size:1.3rem; color:var(--paper);">TT<span style="color:var(--red)">R</span></span>
+        <p style="color:var(--titanium-dim); font-size:0.9rem; max-width:32ch; margin-top:10px;">Troy Toney Racing — club karting, LO206 and KA100.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="sponsors.html">Sponsorship</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="parents.html">Parents &amp; Volunteers</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Get in touch</a></li>
+          <li><a href="mailto:TroyToneyRacing@yahoo.com">TroyToneyRacing@yahoo.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© 2026 Troy Toney Racing. Replace placeholder contact details and stats with your own.</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const submitButton = document.getElementById('submit-button');
+  const formStatus = document.getElementById('form-status');
+
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (submitButton.disabled) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    formStatus.textContent = '';
+    formStatus.style.color = 'var(--titanium-dim, #aaa)';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) {
+        let message = 'Your message could not be sent. Please try again.';
+        try {
+          const result = await response.json();
+          if (Array.isArray(result.errors) && result.errors.length) {
+            message = result.errors.map(error => error.message).filter(Boolean).join(' ') || message;
+          }
+        } catch (_) { /* Keep the generic error message. */ }
+        throw new Error(message);
+      }
+
+      contactForm.reset();
+      formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+      formStatus.style.color = '#7ee0a1';
+    } catch (error) {
+      formStatus.textContent = error.message || 'Unable to send your message. Please try again or email TroyToneyRacing@yahoo.com.';
+      formStatus.style.color = '#ff9292';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send message';
+    }
+  });
+</script>
+</body>
+</html>
