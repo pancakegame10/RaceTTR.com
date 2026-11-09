@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Troy Toney Racing</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* Contact page refinements: scoped so the rest of the TTR website is unaffected. */
+.ttr-contact-page{--ttr-accent:var(--red,#e53b3e);--ttr-ink:var(--paper,#fff);--ttr-muted:var(--titanium-dim,#a8aeb8);color:var(--ttr-ink)}
+.ttr-contact-page .ttr-contact-hero{padding:76px 0 54px;background:linear-gradient(145deg,rgba(22,25,33,.94),rgba(9,11,16,.98))}
+.ttr-contact-page .ttr-eyebrow{font-family:var(--font-display,Oswald,sans-serif);font-size:.82rem;letter-spacing:.19em;font-weight:600;color:var(--ttr-accent);margin:0 0 18px}
+.ttr-contact-page h1,.ttr-contact-page .ttr-form-aside h2{font-family:var(--font-display,Oswald,sans-serif);text-transform:uppercase;line-height:1.08;letter-spacing:.015em}
+.ttr-contact-page h1{font-size:clamp(2.8rem,7vw,5.6rem);margin:0 0 18px}
+.ttr-contact-page h1 span,.ttr-contact-page .ttr-form-aside h2 span{color:var(--ttr-accent)}
+.ttr-contact-page .ttr-intro{max-width:680px;color:var(--ttr-muted);font-size:1.06rem;line-height:1.75;margin:0 0 38px}
+.ttr-contact-page .ttr-contact-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ttr-contact-page .ttr-contact-card{min-width:0;padding:25px;border:1px solid rgba(255,255,255,.14);border-top:3px solid var(--ttr-accent);background:rgba(255,255,255,.035);border-radius:5px}
+.ttr-contact-page .ttr-card-kicker{font-size:.73rem;letter-spacing:.15em;color:var(--ttr-accent);font-weight:700;margin-bottom:14px}
+.ttr-contact-page .ttr-contact-card h2{font-family:var(--font-display,Oswald,sans-serif);font-size:1.38rem;line-height:1.3;margin:0 0 12px}
+.ttr-contact-page .ttr-contact-card a,.ttr-contact-page .ttr-social-name{display:block;color:var(--ttr-ink);font-weight:600;overflow-wrap:anywhere;text-decoration:none;margin:0 0 6px}
+.ttr-contact-page .ttr-contact-card a:hover{text-decoration:underline;text-decoration-color:var(--ttr-accent)}
+.ttr-contact-page .ttr-contact-card p{font-size:.87rem;line-height:1.65;color:var(--ttr-muted);margin:13px 0 0}
+.ttr-contact-page .ttr-contact-card .ttr-social-name{font-size:1rem;color:var(--ttr-ink);margin:0}
+.ttr-contact-page .ttr-form-section{padding:70px 0 90px}
+.ttr-contact-page .ttr-form-layout{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,1.5fr);gap:clamp(28px,6vw,80px);align-items:start}
+.ttr-contact-page .ttr-form-aside h2{font-size:clamp(2rem,4vw,3.2rem);margin:0 0 18px}
+.ttr-contact-page .ttr-form-aside>p:not(.ttr-eyebrow),.ttr-contact-page .ttr-aside-note p{color:var(--ttr-muted);line-height:1.75}
+.ttr-contact-page .ttr-aside-note{border-left:3px solid var(--ttr-accent);padding:2px 0 2px 18px;margin-top:30px}
+.ttr-contact-page .ttr-aside-note strong{display:block;margin-bottom:8px}
+.ttr-contact-page .ttr-aside-note p{margin:0;font-size:.9rem}
+.ttr-contact-page .ttr-form-panel{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:clamp(20px,4vw,36px)}
+.ttr-contact-page .ttr-form-panel-head{margin-bottom:24px}
+.ttr-contact-page .ttr-form-panel-head h3{font-family:var(--font-display,Oswald,sans-serif);font-size:1.7rem;margin:0 0 5px}
+.ttr-contact-page .ttr-form-panel-head p{color:var(--ttr-muted);font-size:.85rem;margin:0}
+.ttr-contact-page .ttr-refined-form{display:grid;gap:18px}
+.ttr-contact-page .ttr-field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ttr-contact-page .ttr-refined-form .field{min-width:0;display:flex;flex-direction:column;gap:8px}
+.ttr-contact-page .ttr-refined-form label{font-size:.85rem;font-weight:600}
+.ttr-contact-page .ttr-optional{color:var(--ttr-muted);font-weight:400}
+.ttr-contact-page .ttr-refined-form input,.ttr-contact-page .ttr-refined-form select,.ttr-contact-page .ttr-refined-form textarea{width:100%;box-sizing:border-box;min-height:46px;padding:12px 14px;border:1px solid rgba(255,255,255,.22);border-radius:4px;background:#181b22;color:#fff;font:inherit}
+.ttr-contact-page .ttr-refined-form textarea{resize:vertical;min-height:145px}
+.ttr-contact-page .ttr-refined-form input::placeholder,.ttr-contact-page .ttr-refined-form textarea::placeholder{color:#a2a8b2}
+.ttr-contact-page .ttr-refined-form :is(input,select,textarea):focus-visible{outline:2px solid var(--ttr-accent);outline-offset:2px}
+.ttr-contact-page .ttr-submit{justify-self:start;display:inline-flex;align-items:center;gap:16px;cursor:pointer}
+.ttr-contact-page .ttr-submit:disabled{opacity:.6;cursor:wait}
+.ttr-contact-page .ttr-form-status{margin:0;font-size:.93rem;line-height:1.5}
+.ttr-contact-page .ttr-form-status:empty{display:none}
+@media(max-width:800px){.ttr-contact-page .ttr-contact-cards{grid-template-columns:1fr}.ttr-contact-page .ttr-form-layout{grid-template-columns:1fr}.ttr-contact-page .ttr-contact-hero{padding-top:48px}}
+@media(max-width:520px){.ttr-contact-page .ttr-field-row{grid-template-columns:1fr}.ttr-contact-page .ttr-form-section{padding:45px 0 60px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <img src="logos/ttr-logo.jpg" alt="Troy Toney Racing" style="height:58px; width:auto; border-radius:2px;">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="sponsors.html">Sponsorship</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="parents.html">Parents &amp; Volunteers</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="ttr-contact-page">
+  <section class="section-dark ttr-contact-hero">
+    <div class="wrap">
+      <p class="ttr-eyebrow">TROY TONEY RACING / CONTACT</p>
+      <h1>LET'S TALK <span>RACING.</span></h1>
+      <p class="ttr-intro">Whether you're exploring a partnership, interested in joining the team, or reaching out from the paddock, we'd love to hear from you.</p>
+      <div class="ttr-contact-cards" aria-label="Team contact information">
+        <article class="ttr-contact-card">
+          <div class="ttr-card-kicker">01 / EMAIL</div>
+          <h2>Start a conversation</h2>
+          <a href="mailto:TroyToneyRacing@yahoo.com">TroyToneyRacing@yahoo.com</a>
+          <p>General inquiries, sponsorships and team opportunities.</p>
+        </article>
+        <article class="ttr-contact-card">
+          <div class="ttr-card-kicker">02 / PHONE</div>
+          <h2>Give us a call</h2>
+          <a href="tel:+15742183106">574-218-3106</a>
+          <a href="tel:+13175903538">317-590-3538</a>
+          <p>Connect directly with the team.</p>
+        </article>
+        <article class="ttr-contact-card">
+          <div class="ttr-card-kicker">03 / SOCIAL</div>
+          <h2>Follow the team</h2>
+          <p class="ttr-social-name">@TMTRacing</p>
+          <p>Find us on Facebook for updates from the track.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark ttr-form-section">
+    <div class="wrap ttr-form-layout">
+      <div class="ttr-form-aside">
+        <p class="ttr-eyebrow">SEND AN INQUIRY</p>
+        <h2>YOUR MESSAGE.<br><span>OUR NEXT LAP.</span></h2>
+        <p>Tell us a little about what you're looking for. Select the topic that fits best and we'll have the information we need to follow up.</p>
+        <div class="ttr-aside-note"><strong>Interested in sponsoring TTR?</strong><p>Choose “Sponsorship” in the form and include your company name so we can start the conversation.</p></div>
+      </div>
+      <div class="ttr-form-panel">
+        <div class="ttr-form-panel-head"><h3>Contact the team</h3><p>Fields marked * are required.</p></div>
+        <form class="contact-form ttr-refined-form" id="contact-form" action="https://formspree.io/f/xnppknpn" method="POST">
+          <input type="hidden" name="_subject" value="New Troy Toney Racing website inquiry">
+          <div class="ttr-field-row">
+            <div class="field"><label for="name">Name *</label><input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required></div>
+            <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required></div>
+          </div>
+          <div class="ttr-field-row">
+            <div class="field"><label for="company">Company <span class="ttr-optional">(optional)</span></label><input type="text" id="company" name="company" autocomplete="organization" placeholder="Company or organization"></div>
+            <div class="field"><label for="reason">What's this about?</label><select id="reason" name="reason"><option value="Sponsorship">Sponsorship</option><option value="Media / press">Media / press</option><option value="Joining the team">Joining the team</option><option value="Something else">Something else</option></select></div>
+          </div>
+          <div class="field"><label for="message">Message *</label><textarea id="message" name="message" rows="6" placeholder="Tell us how we can help..." required></textarea></div>
+          <button type="submit" id="submit-button" class="btn btn-primary ttr-submit">Send message <span aria-hidden="true">→</span></button>
+          <p id="form-status" role="status" aria-live="polite" class="ttr-form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="checker"></div>
+    <div class="foot-grid">
+      <div>
+        <span class="mark" style="font-family:var(--font-display); font-size:1.3rem; color:var(--paper);">TT<span style="color:var(--red)">R</span></span>
+        <p style="color:var(--titanium-dim); font-size:0.9rem; max-width:32ch; margin-top:10px;">Troy Toney Racing — club karting, LO206 and KA100.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="sponsors.html">Sponsorship</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="parents.html">Parents &amp; Volunteers</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="contact.html">Get in touch</a></li>
+          <li><a href="mailto:TroyToneyRacing@yahoo.com">TroyToneyRacing@yahoo.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">© 2026 Troy Toney Racing. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const submitButton = document.getElementById('submit-button');
+  const formStatus = document.getElementById('form-status');
+
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (submitButton.disabled) return;
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    formStatus.textContent = '';
+    formStatus.style.color = 'var(--titanium-dim, #aaa)';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) {
+        let message = 'Your message could not be sent. Please try again.';
+        try {
+          const result = await response.json();
+          if (Array.isArray(result.errors) && result.errors.length) {
+            message = result.errors.map(error => error.message).filter(Boolean).join(' ') || message;
+          }
+        } catch (_) { /* Keep the generic error message. */ }
+        throw new Error(message);
+      }
+
+      contactForm.reset();
+      formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+      formStatus.style.color = '#7ee0a1';
+    } catch (error) {
+      formStatus.textContent = error.message || 'Unable to send your message. Please try again or email TroyToneyRacing@yahoo.com.';
+      formStatus.style.color = '#ff9292';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Send message <span aria-hidden="true">→</span>';
+    }
+  });
+</script>
+</body>
+</html>
